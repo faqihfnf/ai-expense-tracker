@@ -4,6 +4,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import { LogIn } from "lucide-react";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function Navbar() {
           {/* Right Section */}
           <div className="flex items-center space-x-1 sm:space-x-2">
             {/* Theme Toggle */}
-            <div className="p-0.5 sm:p-1">
+            <div className="pt-1.5">
               <ThemeToggle />
             </div>
 
@@ -73,21 +74,10 @@ export default function Navbar() {
             <div className="hidden sm:block">
               <SignedOut>
                 <SignInButton>
-                  <button className="relative overflow-hidden bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 hover:from-emerald-600 hover:via-green-600 hover:to-teal-600 text-white px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
-                    <div className="relative z-10 flex items-center gap-1 sm:gap-2">
+                  <button className="relative overflow-hidden bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 hover:from-emerald-600 hover:via-green-600 hover:to-teal-600 text-white px-2 py-1.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform cursor-pointer">
+                    <div className="relative z-10 flex items-center gap-1">
                       <span>Sign In</span>
-                      <svg
-                        className="w-3 h-3 sm:w-4 sm:h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                        />
-                      </svg>
+                      <LogIn className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
