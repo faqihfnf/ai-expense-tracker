@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/lib/db";
-import { Record } from "@/types/Record";
+import { Record } from "@/types/type";
 import { auth } from "@clerk/nextjs/server";
 
 async function getRecords(): Promise<{
