@@ -3,16 +3,18 @@
 import { generateInsightAnswer } from "@/actions/generateInsightAnswer";
 import { getAIInsights } from "@/actions/getAIInsights";
 import { AIAnswer, InsightData } from "@/types/type";
+import { Star } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const AIInsights = () => {
   const [insights, setInsights] = useState<InsightData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [aiAnswers, setAiAnswers] = useState<AIAnswer[]>([]);
 
   const loadInsights = async () => {
     setIsLoading(true);
+    setAiAnswers([]);
     try {
       const newInsights = await getAIInsights();
       setInsights(newInsights);
@@ -79,10 +81,6 @@ const AIInsights = () => {
     }
   };
 
-  useEffect(() => {
-    loadInsights();
-  }, []);
-
   const getInsightIcon = (type: string) => {
     switch (type) {
       case "warning":
@@ -129,7 +127,7 @@ const AIInsights = () => {
   };
 
   const formatLastUpdated = () => {
-    if (!lastUpdated) return "Loading...";
+    if (!lastUpdated) return "";
 
     const now = new Date();
     const diffMs = now.getTime() - lastUpdated.getTime();
@@ -157,7 +155,7 @@ const AIInsights = () => {
           </div>
           <div className="flex items-center gap-1 sm:gap-2">
             <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
-            <span className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-medium hidden sm:block">Analyzing...</span>
+            <span className="text-sm  text-indigo-600 dark:text-indigo-400 font-semibold hidden sm:block">Analyzing...</span>
           </div>
         </div>
 
@@ -199,17 +197,17 @@ const AIInsights = () => {
           </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-2 py-1 rounded-full text-xs font-medium">
+          {/* <div className="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-2 py-1 rounded-full text-xs font-medium">
             <span className="w-1.5 h-1.5 bg-indigo-500 dark:bg-indigo-400 rounded-full"></span>
             <span className="hidden sm:inline">{formatLastUpdated()}</span>
             <span className="sm:hidden">{formatLastUpdated().includes("ago") ? formatLastUpdated().replace(" ago", "") : formatLastUpdated()}</span>
-          </div>
+          </div> */}
           <button
             onClick={loadInsights}
-            className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200"
+            className=" px-4 py-3 font-semibold bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white rounded-lg text-sm cursor-pointer shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
             disabled={isLoading}
           >
-            <span className="text-sm">🔄</span>
+            ✨ Generate Insights
           </button>
         </div>
       </div>
@@ -295,13 +293,13 @@ const AIInsights = () => {
             </div>
             <span className="font-medium text-xs">Powered by AI analysis</span>
           </div>
-          <button
+          {/* <button
             onClick={loadInsights}
             className="px-3 py-1.5 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white rounded-lg font-medium text-xs shadow-lg hover:shadow-xl transition-all duration-200"
           >
             <span className="sm:hidden">Refresh</span>
             <span className="hidden sm:inline">Refresh Insights →</span>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
