@@ -25,8 +25,7 @@ const AIInsights = () => {
           id: "fallback-1",
           type: "info",
           title: "AI Temporarily Unavailable",
-          message:
-            "We're working to restore AI insights. Please check back soon.",
+          message: "We're working to restore AI insights. Please check back soon.",
           action: "Try again later",
         },
       ]);
@@ -63,11 +62,7 @@ const AIInsights = () => {
       // Use server action to generate AI answer
       const answer = await generateInsightAnswer(question);
 
-      setAiAnswers((prev) =>
-        prev.map((a) =>
-          a.insightId === insight.id ? { ...a, answer, isLoading: false } : a
-        )
-      );
+      setAiAnswers((prev) => prev.map((a) => (a.insightId === insight.id ? { ...a, answer, isLoading: false } : a)));
     } catch (error) {
       console.error("❌ Failed to generate AI answer:", error);
       setAiAnswers((prev) =>
@@ -75,8 +70,7 @@ const AIInsights = () => {
           a.insightId === insight.id
             ? {
                 ...a,
-                answer:
-                  "Sorry, I was unable to generate a detailed answer. Please try again.",
+                answer: "Sorry, I was unable to generate a detailed answer. Please try again.",
                 isLoading: false,
               }
             : a
@@ -158,26 +152,18 @@ const AIInsights = () => {
             <span className="text-white text-sm sm:text-lg">🤖</span>
           </div>
           <div className="flex-1">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">
-              AI Insights
-            </h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-              Analyzing your spending patterns
-            </p>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">AI Insights</h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Analyzing your spending patterns</p>
           </div>
           <div className="flex items-center gap-1 sm:gap-2">
             <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
-            <span className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-medium hidden sm:block">
-              Analyzing...
-            </span>
+            <span className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-medium hidden sm:block">Analyzing...</span>
           </div>
         </div>
 
         <div className="space-y-3 sm:space-y-4">
           {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="animate-pulse bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-600">
+            <div key={i} className="animate-pulse bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-600">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-200 dark:bg-gray-600 rounded-lg"></div>
                 <div className="flex-1 space-y-2">
@@ -193,9 +179,7 @@ const AIInsights = () => {
         <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700 text-center">
           <div className="flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
             <div className="w-1.5 h-1.5 bg-indigo-500 dark:bg-indigo-400 rounded-full animate-pulse"></div>
-            <span className="text-xs sm:text-sm">
-              AI is analyzing your financial patterns...
-            </span>
+            <span className="text-xs sm:text-sm">AI is analyzing your financial patterns...</span>
           </div>
         </div>
       </div>
@@ -210,28 +194,21 @@ const AIInsights = () => {
             <span className="text-white text-sm sm:text-lg">🤖</span>
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">
-              AI Insights
-            </h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-              AI financial analysis
-            </p>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">AI Insights</h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">AI financial analysis</p>
           </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-2 py-1 rounded-full text-xs font-medium">
             <span className="w-1.5 h-1.5 bg-indigo-500 dark:bg-indigo-400 rounded-full"></span>
             <span className="hidden sm:inline">{formatLastUpdated()}</span>
-            <span className="sm:hidden">
-              {formatLastUpdated().includes("ago")
-                ? formatLastUpdated().replace(" ago", "")
-                : formatLastUpdated()}
-            </span>
+            <span className="sm:hidden">{formatLastUpdated().includes("ago") ? formatLastUpdated().replace(" ago", "") : formatLastUpdated()}</span>
           </div>
           <button
             onClick={loadInsights}
             className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200"
-            disabled={isLoading}>
+            disabled={isLoading}
+          >
             <span className="text-sm">🔄</span>
           </button>
         </div>
@@ -239,16 +216,10 @@ const AIInsights = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
         {insights.map((insight) => {
-          const currentAnswer = aiAnswers.find(
-            (a) => a.insightId === insight.id
-          );
+          const currentAnswer = aiAnswers.find((a) => a.insightId === insight.id);
 
           return (
-            <div
-              key={insight.id}
-              className={`relative overflow-hidden rounded-xl p-3 sm:p-4 border-l-4 hover:shadow-lg transition-all duration-200 ${getInsightColors(
-                insight.type
-              )}`}>
+            <div key={insight.id} className={`relative overflow-hidden rounded-xl p-3 sm:p-4 border-l-4 hover:shadow-lg transition-all duration-200 ${getInsightColors(insight.type)}`}>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 sm:gap-3 mb-2">
@@ -261,42 +232,28 @@ const AIInsights = () => {
                           : insight.type === "tip"
                           ? "bg-indigo-100 dark:bg-indigo-900/50"
                           : "bg-indigo-100 dark:bg-indigo-900/50"
-                      }`}>
-                      <span className="text-sm sm:text-lg">
-                        {getInsightIcon(insight.type)}
-                      </span>
+                      }`}
+                    >
+                      <span className="text-sm sm:text-lg">{getInsightIcon(insight.type)}</span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 dark:text-gray-100 text-sm mb-0.5">
-                        {insight.title}
-                      </h4>
+                      <h4 className="font-bold text-gray-900 dark:text-gray-100 text-sm mb-0.5">{insight.title}</h4>
                       {insight.confidence && insight.confidence < 0.8 && (
-                        <span className="inline-block px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-xs font-medium">
-                          Preliminary
-                        </span>
+                        <span className="inline-block px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-xs font-medium">Preliminary</span>
                       )}
                     </div>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs leading-relaxed mb-3">
-                    {insight.message}
-                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs leading-relaxed mb-3">{insight.message}</p>
                   {insight.action && (
                     <div className="text-left">
                       <span
                         onClick={() => handleActionClick(insight)}
-                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium text-xs cursor-pointer transition-all duration-200 ${getButtonColors(
-                          insight.type
-                        )} hover:bg-white/50 dark:hover:bg-gray-700/50 ${
+                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium text-xs cursor-pointer transition-all duration-200 ${getButtonColors(insight.type)} hover:bg-white/50 dark:hover:bg-gray-700/50 ${
                           currentAnswer ? "bg-white/50 dark:bg-gray-700/50" : ""
-                        }`}>
+                        }`}
+                      >
                         <span>{insight.action}</span>
-                        {currentAnswer?.isLoading ? (
-                          <div className="w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
-                        ) : (
-                          <span className="text-xs">
-                            {currentAnswer ? "↑" : "→"}
-                          </span>
-                        )}
+                        {currentAnswer?.isLoading ? <div className="w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin"></div> : <span className="text-xs">{currentAnswer ? "↑" : "→"}</span>}
                       </span>
                     </div>
                   )}
@@ -309,9 +266,7 @@ const AIInsights = () => {
                           <span className="text-white text-xs">🤖</span>
                         </div>
                         <div className="flex-1">
-                          <h5 className="font-semibold text-gray-900 dark:text-gray-100 text-xs mb-1">
-                            AI Answer:
-                          </h5>
+                          <h5 className="font-semibold text-gray-900 dark:text-gray-100 text-xs mb-1">AI Answer:</h5>
                           {currentAnswer.isLoading ? (
                             <div className="space-y-1">
                               <div className="animate-pulse bg-gray-200 dark:bg-gray-600 h-2 rounded-lg w-full"></div>
@@ -319,9 +274,7 @@ const AIInsights = () => {
                               <div className="animate-pulse bg-gray-200 dark:bg-gray-600 h-2 rounded-lg w-1/2"></div>
                             </div>
                           ) : (
-                            <p className="text-gray-700 dark:text-gray-300 text-xs leading-relaxed">
-                              {currentAnswer.answer}
-                            </p>
+                            <p className="text-gray-700 dark:text-gray-300 text-xs leading-relaxed">{currentAnswer.answer}</p>
                           )}
                         </div>
                       </div>
@@ -344,7 +297,8 @@ const AIInsights = () => {
           </div>
           <button
             onClick={loadInsights}
-            className="px-3 py-1.5 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white rounded-lg font-medium text-xs shadow-lg hover:shadow-xl transition-all duration-200">
+            className="px-3 py-1.5 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white rounded-lg font-medium text-xs shadow-lg hover:shadow-xl transition-all duration-200"
+          >
             <span className="sm:hidden">Refresh</span>
             <span className="hidden sm:inline">Refresh Insights →</span>
           </button>

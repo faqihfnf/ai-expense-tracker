@@ -1,27 +1,12 @@
 "use client";
 
 import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 
 // Register Chart.js components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 // Define the type for a record
 interface Record {
@@ -52,10 +37,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
 
   // Aggregate expenses by date
   const aggregateByDate = (records: Record[]) => {
-    const dateMap = new Map<
-      string,
-      { total: number; categories: string[]; originalDate: string }
-    >();
+    const dateMap = new Map<string, { total: number; categories: string[]; originalDate: string }>();
 
     records.forEach((record) => {
       // Parse the date string properly and extract just the date part (YYYY-MM-DD)
@@ -89,11 +71,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
         categories: data.categories,
         originalDate: data.originalDate,
       }))
-      .sort(
-        (a, b) =>
-          new Date(a.originalDate).getTime() -
-          new Date(b.originalDate).getTime()
-      );
+      .sort((a, b) => new Date(a.originalDate).getTime() - new Date(b.originalDate).getTime());
   };
 
   const aggregatedData = aggregateByDate(records);
@@ -131,12 +109,8 @@ const BarChart = ({ records }: { records: Record[] }) => {
     datasets: [
       {
         data: aggregatedData.map((item) => item.amount),
-        backgroundColor: aggregatedData.map(
-          (item) => getAmountColor(item.amount).bg
-        ),
-        borderColor: aggregatedData.map(
-          (item) => getAmountColor(item.amount).border
-        ),
+        backgroundColor: aggregatedData.map((item) => getAmountColor(item.amount).bg),
+        borderColor: aggregatedData.map((item) => getAmountColor(item.amount).border),
         borderWidth: 1,
         borderRadius: 2, // Rounded bar edges
       },
@@ -154,9 +128,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
         display: false, // Remove chart title
       },
       tooltip: {
-        backgroundColor: isDark
-          ? "rgba(31, 41, 55, 0.95)"
-          : "rgba(255, 255, 255, 0.95)",
+        backgroundColor: isDark ? "rgba(31, 41, 55, 0.95)" : "rgba(255, 255, 255, 0.95)",
         titleColor: isDark ? "#f9fafb" : "#1f2937",
         bodyColor: isDark ? "#d1d5db" : "#374151",
         borderColor: isDark ? "#374151" : "#e5e7eb",
@@ -166,11 +138,8 @@ const BarChart = ({ records }: { records: Record[] }) => {
           label: function (context: { dataIndex: number }) {
             const dataIndex = context.dataIndex;
             const item = aggregatedData[dataIndex];
-            const categoriesText =
-              item.categories.length > 1
-                ? `Categories: ${item.categories.join(", ")}`
-                : `Category: ${item.categories[0]}`;
-            return [`Total: $${item.amount.toFixed(2)}`, categoriesText];
+            const categoriesText = item.categories.length > 1 ? `Categories: ${item.categories.join(", ")}` : `Category: ${item.categories[0]}`;
+            return [`Total: ${item.amount.toFixed(0)} K`, categoriesText];
           },
         },
       },
@@ -201,7 +170,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
       y: {
         title: {
           display: true,
-          text: "Amount ($)",
+          text: "Amount (K)",
           font: {
             size: isMobile ? 12 : 16, // Smaller font on mobile
             weight: "bold" as const,
@@ -214,7 +183,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
           },
           color: isDark ? "#9ca3af" : "#7f8c8d", // Gray y-axis labels
           callback: function (value: string | number) {
-            return "$" + value; // Add dollar sign to y-axis labels
+            return value + " K"; // Add dollar sign to y-axis labels
           },
         },
         grid: {

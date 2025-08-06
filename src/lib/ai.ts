@@ -35,8 +35,14 @@ export interface AIInsight {
 }
 
 export async function generateExpenseInsights(expenses: ExpenseRecord[]): Promise<AIInsight[]> {
+  // Format number to "250K" etc
+  function formatToK(amount: number): string {
+    const rounded = Math.round(amount / 1000);
+    return `${rounded}K`;
+  }
+
   try {
-    // Prepare expense data for AI analysis
+    // Ringkas data yang dikirim ke AI
     const expensesSummary = expenses.map((expense) => ({
       amount: expense.amount,
       category: expense.category,
@@ -44,33 +50,29 @@ export async function generateExpenseInsights(expenses: ExpenseRecord[]): Promis
       date: expense.date,
     }));
 
-    const prompt = `Analyze the following expense data and provide 3-4 actionable financial insights. 
-    Return a JSON array of insights with this structure:
-    {
-      "type": "warning|info|success|tip",
-      "title": "Brief title",
-      "message": "Detailed insight message with specific numbers when possible",
-      "action": "Actionable suggestion",
-      "confidence": 0.8
-    }
+    const prompt = `
+You are a financial advisor AI. Analyze the following expense data and return exactly 3–4 JSON-formatted insights, as a JSON array.
+DO NOT include explanations, do NOT wrap in markdown, just return the pure JSON array.
 
-    Expense Data:
-    ${JSON.stringify(expensesSummary, null, 2)}
+Each object in the array must follow this format:
+{
+  "type": "warning|info|success|tip",
+  "title": "Brief title",
+  "message": "Detailed insight message with specific numbers when possible (in K, no currency symbol like '$' or 'USD', format numbers like '250K')",
+  "action": "Actionable suggestion",
+  "confidence": 0.8
+}
 
-    Focus on:
-    1. Spending patterns (day of week, categories)
-    2. Budget alerts (high spending areas)
-    3. Money-saving opportunities
-    4. Positive reinforcement for good habits
-
-    Return only valid JSON array, no additional text.`;
+Expense Data:
+${JSON.stringify(expensesSummary, null, 2)}
+`;
 
     const completion = await openai.chat.completions.create({
       model: "mistralai/mistral-7b-instruct:free",
       messages: [
         {
           role: "system",
-          content: "You are a financial advisor AI that analyzes spending patterns and provides actionable insights. Always respond with valid JSON only.",
+          content: "You are a financial advisor AI that analyzes spending patterns and provides JSON-formatted insights. Return JSON only.",
         },
         {
           role: "user",
@@ -81,29 +83,40 @@ export async function generateExpenseInsights(expenses: ExpenseRecord[]): Promis
       max_tokens: 1000,
     });
 
-    const response = completion.choices[0].message.content;
-    if (!response) {
-      throw new Error("No response from AI");
+    // --- Parsing response ---
+    let response = completion.choices[0].message.content?.trim();
+    if (!response) throw new Error("No response from AI");
+
+    // Remove markdown if ada
+    response = response
+      .replace(/^```json\s*/, "")
+      .replace(/^```/, "")
+      .replace(/```$/, "")
+      .replace(/^Here are your insights:\s*/i, "")
+      .trim();
+
+    // Parse to JSON
+    const insights = JSON.parse(response);
+    if (!Array.isArray(insights)) {
+      console.error("⚠️ AI response is not array:", insights);
+      throw new Error("AI response is not a valid array");
     }
 
-    // Clean the response by removing markdown code blocks if present
-    let cleanedResponse = response.trim();
-    if (cleanedResponse.startsWith("```json")) {
-      cleanedResponse = cleanedResponse.replace(/^```json\s*/, "").replace(/\s*```$/, "");
-    } else if (cleanedResponse.startsWith("```")) {
-      cleanedResponse = cleanedResponse.replace(/^```\s*/, "").replace(/\s*```$/, "");
-    }
-
-    // Parse AI response
-    const insights = JSON.parse(cleanedResponse);
-
-    // Add IDs and ensure proper format
+    // Format message (replace number format)
     const formattedInsights = insights.map((insight: RawInsight, index: number) => ({
       id: `ai-${Date.now()}-${index}`,
-      type: insight.type || "info",
+      type: ["warning", "info", "success", "tip"].includes(insight.type || "") ? (insight.type as "warning" | "info" | "success" | "tip") : "info",
+
       title: insight.title || "AI Insight",
-      message: insight.message || "Analysis complete",
-      action: insight.action,
+      message:
+        insight.message?.replace(/\$\s?(\d{1,3}(?:,\d{3})*|\d+)/g, (match, numStr) => {
+          const number = parseInt(numStr.replace(/,/g, ""), 10);
+          return formatToK(number);
+        }) || "Analysis complete",
+      action: insight.action?.replace(/\$\s?(\d{1,3}(?:,\d{3})*|\d+)/g, (match, numStr) => {
+        const number = parseInt(numStr.replace(/,/g, ""), 10);
+        return formatToK(number);
+      }),
       confidence: insight.confidence || 0.8,
     }));
 
@@ -111,7 +124,7 @@ export async function generateExpenseInsights(expenses: ExpenseRecord[]): Promis
   } catch (error) {
     console.error("❌ Error generating AI insights:", error);
 
-    // Fallback to mock insights if AI fails
+    // Fallback jika AI error
     return [
       {
         id: "fallback-1",
@@ -167,7 +180,7 @@ export async function generateAIAnswer(question: string, context: ExpenseRecord[
     const prompt = `Based on the following expense data, provide a detailed and actionable answer to this question: "${question}"
 
     Expense Data:
-    ${JSON.stringify(expensesSummary, null, 2)}
+    ${JSON.stringify(expensesSummary, null, 0)} K
 
     Provide a comprehensive answer that:
     1. Addresses the specific question directly
