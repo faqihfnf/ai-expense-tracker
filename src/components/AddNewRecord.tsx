@@ -190,7 +190,7 @@ const AddRecord = () => {
             <label htmlFor="amount" className="flex items-center gap-2 text-xs font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
               Amount
-              {/* <span className="text-xs text-gray-400 dark:text-gray-500 ml-2 font-normal hidden sm:inline">Enter amount between $0 and $1,000</span> */}
+              <span className="text-xs text-gray-400 dark:text-gray-500 ml-2 font-normal hidden sm:inline">In Thousands (K)</span>
             </label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 font-medium text-sm"></span>
