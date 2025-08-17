@@ -3,13 +3,12 @@
 import { generateInsightAnswer } from "@/actions/generateInsightAnswer";
 import { getAIInsights } from "@/actions/getAIInsights";
 import { AIAnswer, InsightData } from "@/types/type";
-import { Star } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const AIInsights = () => {
   const [insights, setInsights] = useState<InsightData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  // const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [aiAnswers, setAiAnswers] = useState<AIAnswer[]>([]);
 
   const loadInsights = async () => {
@@ -18,7 +17,7 @@ const AIInsights = () => {
     try {
       const newInsights = await getAIInsights();
       setInsights(newInsights);
-      setLastUpdated(new Date());
+      // setLastUpdated(new Date());
     } catch (error) {
       console.error("❌ AIInsights: Failed to load AI insights:", error);
       // Fallback to mock data if AI fails
@@ -124,22 +123,6 @@ const AIInsights = () => {
       default:
         return "text-gray-700 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200";
     }
-  };
-
-  const formatLastUpdated = () => {
-    if (!lastUpdated) return "";
-
-    const now = new Date();
-    const diffMs = now.getTime() - lastUpdated.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-
-    if (diffMins < 1) return "Just now";
-    if (diffMins < 60) return `${diffMins}m ago`;
-
-    const diffHours = Math.floor(diffMins / 60);
-    if (diffHours < 24) return `${diffHours}h ago`;
-
-    return lastUpdated.toLocaleDateString();
   };
 
   if (isLoading) {

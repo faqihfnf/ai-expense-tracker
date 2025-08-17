@@ -13,25 +13,23 @@ const AboutPage = () => {
             <span className="sm:hidden">AI Technology</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-gray-100 leading-tight">
-            About{" "}
-            <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
-              ExpenseTracker AI
-            </span>
+            About <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">ExpenseTracker AI</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
-            Your intelligent companion for tracking expenses and managing your
-            finances with cutting-edge AI-powered insights.
+            Your intelligent companion for tracking expenses and managing your finances with cutting-edge AI-powered insights.
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2 sm:px-0">
             <Link
               href="/sign-up"
-              className="group relative overflow-hidden bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold shadow-2xl hover:shadow-3xl transition-all duration-200 transform hover:-translate-y-0.5">
+              className="group relative overflow-hidden bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold shadow-2xl hover:shadow-3xl transition-all duration-200 transform hover:-translate-y-0.5"
+            >
               <span className="relative z-10">Start Your Journey</span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
             </Link>
             <Link
               href="/contact"
-              className="group border-2 border-indigo-500/20 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold transition-all duration-200 backdrop-blur-sm">
+              className="group border-2 border-indigo-500/20 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold transition-all duration-200 backdrop-blur-sm"
+            >
               Learn More
             </Link>
           </div>
@@ -47,40 +45,24 @@ const AboutPage = () => {
             Our Mission
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-gray-100 px-2 sm:px-0">
-            Transforming Financial Management with{" "}
-            <span className="text-indigo-600 dark:text-indigo-400">AI</span>
+            Transforming Financial Management with <span className="text-indigo-600 dark:text-indigo-400">AI</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto">
-            At ExpenseTracker AI, we leverage cutting-edge artificial
-            intelligence to revolutionize how individuals achieve financial
-            wellness. Our AI analyzes your spending patterns to deliver
-            personalized recommendations and actionable insights that lead to
-            better budgeting and financial freedom.
+            At ExpenseTracker AI, we leverage cutting-edge artificial intelligence to revolutionize how individuals achieve financial wellness. Our AI analyzes your spending patterns to deliver personalized recommendations and actionable
+            insights that lead to better budgeting and financial freedom.
           </p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 p-6 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
-              <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
-                10K+
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium">
-                Active Users
-              </div>
+              <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">10K+</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium">Active Users</div>
             </div>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-2xl border border-blue-100 dark:border-blue-800/50">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                $2M+
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium">
-                Money Tracked
-              </div>
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">$2M+</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium">Money Tracked</div>
             </div>
             <div className="bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-cyan-900/20 dark:to-indigo-900/20 p-6 rounded-2xl border border-cyan-100 dark:border-cyan-800/50">
-              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">
-                99%
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium">
-                Satisfaction Rate
-              </div>
+              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">99%</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium">Satisfaction Rate</div>
             </div>
           </div>
         </div>
@@ -95,15 +77,9 @@ const AboutPage = () => {
               Features
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Why Choose{" "}
-              <span className="text-indigo-600 dark:text-indigo-400">
-                ExpenseTracker AI?
-              </span>
+              Why Choose <span className="text-indigo-600 dark:text-indigo-400">ExpenseTracker AI?</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Discover the powerful features that make our AI-driven platform
-              the smart choice for modern financial management.
-            </p>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Discover the powerful features that make our AI-driven platform the smart choice for modern financial management.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -113,14 +89,8 @@ const AboutPage = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 via-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg mb-6">
                   <span className="text-white text-xl">🤖</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  AI-Powered Insights
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  Get intelligent analysis of your spending patterns with
-                  personalized AI recommendations and automated category
-                  suggestions that learn from your behavior.
-                </p>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">AI-Powered Insights</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Get intelligent analysis of your spending patterns with personalized AI recommendations and automated category suggestions that learn from your behavior.</p>
               </div>
             </div>
 
@@ -130,14 +100,8 @@ const AboutPage = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-cyan-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg mb-6">
                   <span className="text-white text-xl">✨</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  Smart Categorization
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  Let our AI automatically categorize your expenses with 99%
-                  accuracy and provide tailored recommendations to enhance your
-                  budget management effortlessly.
-                </p>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Smart Categorization</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Let our AI automatically categorize your expenses with 99% accuracy and provide tailored recommendations to enhance your budget management effortlessly.</p>
               </div>
             </div>
 
@@ -147,13 +111,9 @@ const AboutPage = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 via-indigo-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg mb-6">
                   <span className="text-white text-xl">📊</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  Intelligent Dashboard
-                </h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Intelligent Dashboard</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  Experience a modern, AI-enhanced interface with real-time
-                  insights, interactive financial analytics, and beautiful
-                  visualizations that make sense of your data.
+                  Experience a modern, AI-enhanced interface with real-time insights, interactive financial analytics, and beautiful visualizations that make sense of your data.
                 </p>
               </div>
             </div>
@@ -173,27 +133,19 @@ const AboutPage = () => {
               Our Story
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-gray-100">
-              Built for the{" "}
-              <span className="text-indigo-600 dark:text-indigo-400">
-                Future
-              </span>
+              Built for the <span className="text-indigo-600 dark:text-indigo-400">Future</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                ExpenseTracker AI was born from the vision of creating truly
-                intelligent financial management tools. Our team of financial
-                experts, data scientists, and technologists came together to
-                solve a critical problem: making personal finance management
-                smarter, more intuitive, and more effective.
+                ExpenseTracker AI was born from the vision of creating truly intelligent financial management tools. Our team of financial experts, data scientists, and technologists came together to solve a critical problem: making
+                personal finance management smarter, more intuitive, and more effective.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                Since our launch, we&#39;ve helped thousands of users achieve
-                better budgeting and improve their overall financial health
-                through the power of artificial intelligence. Every feature is
-                designed with user experience and financial wellness in mind.
+                Since our launch, we&#39;ve helped thousands of users achieve better budgeting and improve their overall financial health through the power of artificial intelligence. Every feature is designed with user experience and
+                financial wellness in mind.
               </p>
               <div className="flex items-center gap-4 pt-4">
                 <div className="flex -space-x-2">
@@ -212,27 +164,19 @@ const AboutPage = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-3 h-3 bg-indigo-500 dark:bg-indigo-400 rounded-full"></div>
-                  <div className="text-gray-900 dark:text-gray-100 font-medium">
-                    Founded in 2024
-                  </div>
+                  <div className="text-gray-900 dark:text-gray-100 font-medium">Founded in 2024</div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-3 h-3 bg-blue-500 dark:bg-blue-400 rounded-full"></div>
-                  <div className="text-gray-900 dark:text-gray-100 font-medium">
-                    AI-First Approach
-                  </div>
+                  <div className="text-gray-900 dark:text-gray-100 font-medium">AI-First Approach</div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-3 h-3 bg-cyan-500 dark:bg-cyan-400 rounded-full"></div>
-                  <div className="text-gray-900 dark:text-gray-100 font-medium">
-                    Global Impact
-                  </div>
+                  <div className="text-gray-900 dark:text-gray-100 font-medium">Global Impact</div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-3 h-3 bg-indigo-500 dark:bg-indigo-400 rounded-full"></div>
-                  <div className="text-gray-900 dark:text-gray-100 font-medium">
-                    User-Centric Design
-                  </div>
+                  <div className="text-gray-900 dark:text-gray-100 font-medium">User-Centric Design</div>
                 </div>
               </div>
             </div>
@@ -252,22 +196,18 @@ const AboutPage = () => {
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
-            Take Control of Your{" "}
-            <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
-              Financial Future
-            </span>
+            Take Control of Your <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">Financial Future</span>
           </h2>
 
           <p className="text-xl md:text-2xl mb-10 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Join thousands of users who have already transformed their financial
-            habits with ExpenseTracker AI. Start your journey towards smarter
-            budgeting today.
+            Join thousands of users who have already transformed their financial habits with ExpenseTracker AI. Start your journey towards smarter budgeting today.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link
               href="/sign-up"
-              className="group relative overflow-hidden bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-200 transform hover:-translate-y-0.5">
+              className="group relative overflow-hidden bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 hover:from-indigo-700 hover:via-blue-600 hover:to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-200 transform hover:-translate-y-0.5"
+            >
               <span className="relative z-10 flex items-center gap-2">
                 Get Started Free
                 <span className="text-lg">→</span>
@@ -277,38 +217,25 @@ const AboutPage = () => {
 
             <Link
               href="/contact"
-              className="group border-2 border-indigo-500/20 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 px-8 py-4 rounded-2xl font-semibold transition-all duration-200 backdrop-blur-sm flex items-center gap-2">
+              className="group border-2 border-indigo-500/20 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 px-8 py-4 rounded-2xl font-semibold transition-all duration-200 backdrop-blur-sm flex items-center gap-2"
+            >
               Contact Us
-              <span className="text-lg group-hover:translate-x-0.5 transition-transform duration-200">
-                💬
-              </span>
+              <span className="text-lg group-hover:translate-x-0.5 transition-transform duration-200">💬</span>
             </Link>
           </div>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
-                Free
-              </div>
-              <div className="text-gray-600 dark:text-gray-400">
-                No credit card required
-              </div>
+              <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">Free</div>
+              <div className="text-gray-600 dark:text-gray-400">No credit card required</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                24/7
-              </div>
-              <div className="text-gray-600 dark:text-gray-400">
-                AI-powered support
-              </div>
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">24/7</div>
+              <div className="text-gray-600 dark:text-gray-400">AI-powered support</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">
-                Instant
-              </div>
-              <div className="text-gray-600 dark:text-gray-400">
-                Setup in minutes
-              </div>
+              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">Instant</div>
+              <div className="text-gray-600 dark:text-gray-400">Setup in minutes</div>
             </div>
           </div>
         </div>
