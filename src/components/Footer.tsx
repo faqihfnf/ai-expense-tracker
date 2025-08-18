@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin, Youtube } from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -92,7 +92,7 @@ const Footer = () => {
 
           <div className="flex justify-center sm:justify-end gap-4">
             <Link
-              href="https://github.com/username"
+              href="https://github.com/faqihfnf"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 rounded-lg bg-black-200 border border-indigo-400 dark:border-slate-700 hover:bg-indigo-600 hover:text-white text-indigo-600 hover:border-indigo-600"
@@ -100,7 +100,7 @@ const Footer = () => {
               <Github className="w-5 h-5" />
             </Link>
             <Link
-              href="https://linkedin.com/in/username"
+              href="https://www.linkedin.com/in/faqih-nur-fahmi-b51bb1ab/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 rounded-lg bg-black-200 border border-indigo-400 dark:border-slate-700 hover:bg-indigo-600 hover:text-white text-indigo-600 hover:border-indigo-600"
@@ -108,20 +108,28 @@ const Footer = () => {
               <Linkedin className="w-5 h-5" />
             </Link>
             <Link
-              href="https://twitter.com/username"
+              href="https://facebook.com/faqihnurfahmi"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 rounded-lg bg-black-200 border border-indigo-400 dark:border-slate-700 hover:bg-indigo-600 hover:text-white text-indigo-600 hover:border-indigo-600"
             >
-              <Twitter className="w-5 h-5" />
+              <Facebook className="w-5 h-5" />
             </Link>
             <Link
-              href="https://twitter.com/username"
+              href="https://youtube.com/@marifahid"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 rounded-lg bg-black-200 border border-indigo-400 dark:border-slate-700 hover:bg-indigo-600 hover:text-white text-indigo-600 hover:border-indigo-600"
             >
               <Youtube className="w-5 h-5" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/faqih.fnf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 rounded-lg bg-black-200 border border-indigo-400 dark:border-slate-700 hover:bg-indigo-600 hover:text-white text-indigo-600 hover:border-indigo-600"
+            >
+              <Instagram className="w-5 h-5" />
             </Link>
           </div>
         </div>
